@@ -30,7 +30,7 @@ export const createProduct =
         discountPrice,
         stock,
         shopId,
-        images,
+        images
       );
       dispatch({
         type: "productCreateSuccess",
@@ -67,27 +67,26 @@ export const getAllProductsShop = (id) => async (dispatch) => {
 };
 
 // delete product of a shop
-export const deleteProduct = (id) => async (dispatch) => {
+export const deleteProduct = (id, callback) => async (dispatch) => {
   try {
-    dispatch({
-      type: "deleteProductRequest",
-    });
+    dispatch({ type: "deleteProductRequest" });
 
     const { data } = await axios.delete(
       `${server}/product/delete-shop-product/${id}`,
-      {
-        withCredentials: true,
-      }
+      { withCredentials: true }
     );
 
-    dispatch({
-      type: "deleteProductSuccess",
-      payload: data.message,
-    });
+    dispatch({ type: "deleteProductSuccess", payload: data.message });
+
+    if (callback) callback(); // Execute callback after successful deletion
   } catch (error) {
+    console.error(
+      "Delete product error:",
+      error.response?.data?.message || error.message
+    );
     dispatch({
       type: "deleteProductFailed",
-      payload: error.response.data.message,
+      payload: error.response?.data?.message || error.message,
     });
   }
 };

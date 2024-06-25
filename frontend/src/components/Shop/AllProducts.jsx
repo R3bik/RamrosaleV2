@@ -19,8 +19,11 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
-    window.location.reload();
+    dispatch(
+      deleteProduct(id, () => {
+        dispatch(getAllProductsShop(seller._id)); // Refresh the product list after deletion
+      })
+    );
   };
 
   const columns = [
