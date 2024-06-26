@@ -77,7 +77,7 @@ const CartSingle = ({ data, removeFromWishlistHandler, addToCartHandler }) => {
           onClick={() => removeFromWishlistHandler(data)}
         />
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDkk7MusHktX1NeXzr6J75RdLeJ8VUonNhR4CSh9y-Bw&s"
+          src={`${data?.images[0]?.url}`}
           alt=""
           className="w-[130px] h-min ml-2 mr-2 rounded-[5px]"
         />

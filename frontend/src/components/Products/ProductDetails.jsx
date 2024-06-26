@@ -63,7 +63,7 @@ const ProductDetails = ({ data }) => {
     if (isItemExists) {
       toast.error("Item already in cart!");
     } else {
-      if (data.stock <= 1) {
+      if (data.stock < count) {
         toast.error("Product stock limited!");
       } else {
         const cartData = { ...data, qty: count };

@@ -63,7 +63,7 @@ const Cart = ({ setOpenCart }) => {
             <strong>Total: </strong>${totalPrice.toFixed(2)}
           </div>
           {/* checkout buttons */}
-          <Link to="/Checkoutt">
+          <Link to="/Checkout">
             <div
               className={`h-[45px] flex items-center justify-center w-[100%] bg-[#e44343] rounded-[5px]`}
             >
@@ -119,7 +119,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </div>
         </div>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDkk7MusHktX1NeXzr6J75RdLeJ8VUonNhR4CSh9y-Bw&s"
+          src={`${data?.images[0]?.url}`}
           alt=""
           className="w-[130px] h-min ml-2 mr-2 rounded-[5px]"
         />
