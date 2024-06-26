@@ -404,23 +404,25 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
         <div className="w-[30px]">
+          {/* File input for image upload */}
           <input
             type="file"
-            name=""
+            name="image"
             id="image"
             className="hidden"
             onChange={handleImageUpload}
+            aria-label="Upload Image"
           />
           <label htmlFor="image">
             <TfiGallery className="cursor-pointer" size={20} />
           </label>
         </div>
         <div className="w-full">
+          {/* Text input for message */}
           <input
             type="text"
             required
@@ -428,12 +430,21 @@ const SellerInbox = ({
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             className={`${styles.input}`}
+            aria-label="Message Input"
           />
-          <input type="submit" value="Send" className="hidden" id="send" />
+          {/* Submit button */}
+          <input
+            type="submit"
+            value="Send"
+            className="hidden"
+            id="send"
+            aria-label="Send Message"
+          />
           <label htmlFor="send">
             <AiOutlineSend
               size={20}
               className="absolute right-4 top-5 cursor-pointer"
+              aria-hidden="true"
             />
           </label>
         </div>
