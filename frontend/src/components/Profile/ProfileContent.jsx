@@ -30,7 +30,7 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState(null);
+  const [ setAvatar] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ProfileContent = ({ active }) => {
       toast.success(successMessage);
       dispatch({ type: "clearMessages" });
     }
-  }, [error, successMessage]);
+  }, [error, successMessage,dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ const ProfileContent = ({ active }) => {
             <div className="relative">
               <img
                 src={`${user?.avatar?.url}`}
-                className="w-[150px] h-[150px] rounded-full object-cover border-[3px] border-[#3ad132]"
+                className="w-[150px] h-[150px] rounded-full object-cover border-[3px] border-third"
                 alt=""
               />
               <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
@@ -104,7 +104,7 @@ const ProfileContent = ({ active }) => {
           <br />
           <br />
           <div className="w-full px-5">
-            <form onSubmit={handleSubmit} aria-required={true}>
+            <form onSubmit={handleSubmit}>
               <div className="w-full 800px:flex block pb-3">
                 <div className=" w-[100%] 800px:w-[50%]">
                   <label className="block pb-2">Full Name</label>
@@ -152,7 +152,7 @@ const ProfileContent = ({ active }) => {
                 </div>
               </div>
               <input
-                className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+                className={`w-[250px] h-[40px] border bg-third  text-center text-[white] rounded-[3px] mt-8 cursor-pointer`}
                 required
                 value="Update"
                 type="submit"
@@ -207,7 +207,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, []);
+  }, [dispatch,user._id]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -292,7 +292,7 @@ const AllRefundOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, []);
+  }, [dispatch,user._id]);
 
   const eligibleOrders =
     orders && orders.filter((item) => item.status === "Processing refund");
@@ -380,7 +380,7 @@ const TrackOrder = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, []);
+  }, [dispatch,user._id]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -489,7 +489,6 @@ const ChangePassword = () => {
       </h1>
       <div className="w-full">
         <form
-          aria-required
           onSubmit={passwordChangeHandler}
           className="flex flex-col items-center"
         >
@@ -523,7 +522,7 @@ const ChangePassword = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <input
-              className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+              className={`w-[95%] h-[40px] border bg-third text-center text-[white] rounded-[3px] mt-8 cursor-pointer`}
               required
               value="Update"
               type="submit"
@@ -605,7 +604,7 @@ const Address = () => {
               Add New Address
             </h1>
             <div className="w-full">
-              <form aria-required onSubmit={handleSubmit} className="w-full">
+              <form onSubmit={handleSubmit} className="w-full">
                 <div className="w-full block p-4">
                   <div className="w-full pb-2">
                     <label className="block pb-2">Country</label>
