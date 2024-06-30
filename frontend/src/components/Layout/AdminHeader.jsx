@@ -1,21 +1,25 @@
-import React from 'react'
-import { AiOutlineGift } from 'react-icons/ai'
-import { BiMessageSquareDetail } from 'react-icons/bi'
-import { FiPackage, FiShoppingBag } from 'react-icons/fi'
-import { MdOutlineLocalOffer } from 'react-icons/md'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { AiOutlineGift } from "react-icons/ai";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { FiPackage, FiShoppingBag } from "react-icons/fi";
+import { MdOutlineLocalOffer } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { logo } from "../../routes/Routes";
 
 const AdminHeader = () => {
-    const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div className="w-full h-[80px] bg-primary-black text-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
         <Link to="/">
-          <h3 className="text-2xl font-bold">
-            Ramro<span className="text-[#76ABAE]">Sale</span>
-          </h3>
+          <div className="flex justify-between items-center">
+            <img src={logo} alt="logo" height={40} width={40} />
+            <h3 className="text-2xl font-bold">
+              Ramro<span className="text-[#76ABAE]">Sale</span>
+            </h3>
+          </div>
         </Link>
       </div>
       <div className="flex items-center">
@@ -42,7 +46,11 @@ const AdminHeader = () => {
             />
           </Link>
           <Link to="/dashboard-orders" className="800px:block hidden">
-            <FiPackage color="white" size={30} className="mx-5 cursor-pointer" />
+            <FiPackage
+              color="white"
+              size={30}
+              className="mx-5 cursor-pointer"
+            />
           </Link>
           <Link to="/dashboard-messages" className="800px:block hidden">
             <BiMessageSquareDetail
@@ -60,6 +68,6 @@ const AdminHeader = () => {
       </div>
     </div>
   );
-}
+};
 
-export default AdminHeader
+export default AdminHeader;

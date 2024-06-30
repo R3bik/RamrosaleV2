@@ -5,6 +5,7 @@ import { FiPackage, FiShoppingBag } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
+import { logo } from "../../../routes/Routes";
 
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -13,9 +14,12 @@ const DashboardHeader = () => {
       <div className="bg-primary-black text-white h-[80px] flex items-center justify-between px-4">
         <div className="ml-11 mb-2 flex items-center">
           <Link to="/">
-            <h3 className="text-2xl font-bold">
-              Ramro<span className="text-[#76ABAE]">Sale</span>
-            </h3>
+            <div className="flex justify-between items-center">
+              <img src={logo} alt="logo" height={40} width={40} />
+              <h3 className="text-2xl font-bold">
+                Ramro<span className="text-[#76ABAE]">Sale</span>
+              </h3>
+            </div>
           </Link>
         </div>
         <div className="flex items-center">

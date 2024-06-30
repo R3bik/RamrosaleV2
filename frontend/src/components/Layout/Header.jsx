@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
-import { categoriesData} from "../../static/data";
+import { categoriesData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
+import { logo } from "../../routes/Routes";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -58,9 +59,12 @@ const Header = ({ activeHeading }) => {
           <div className=" hidden 800px:h-[50px]  800px:my-[20px] 800px:flex items-center justify-between">
             <div>
               <Link to="/">
-                <h3 className="text-2xl font-bold">
-                  Ramro<span className="text-[#76ABAE]">Sale</span>
-                </h3>
+                <div className="flex justify-between items-center">
+                  <img src={logo} alt="logo" height={40} width={40} />
+                  <h3 className="text-2xl font-bold">
+                    Ramro<span className="text-[#76ABAE]">Sale</span>
+                  </h3>
+                </div>
               </Link>
             </div>
             {/* search box */}
