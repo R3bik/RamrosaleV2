@@ -10,57 +10,56 @@ const AdminHeader = () => {
     const {user} = useSelector((state) => state.user);
 
   return (
-         <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
+    <div className="w-full h-[80px] bg-primary-black text-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
         <Link to="/">
-          <img
-            src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-            alt=""
-          />
+          <h3 className="text-2xl font-bold">
+            Ramro<span className="text-[#76ABAE]">Sale</span>
+          </h3>
         </Link>
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-4">
           <Link to="/dashboard/cupouns" className="800px:block hidden">
             <AiOutlineGift
-              color="#555"
+              color="white"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-events" className="800px:block hidden">
             <MdOutlineLocalOffer
-              color="#555"
+              color="white"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-products" className="800px:block hidden">
             <FiShoppingBag
-              color="#555"
+              color="white"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
           <Link to="/dashboard-orders" className="800px:block hidden">
-            <FiPackage color="#555" size={30} className="mx-5 cursor-pointer" />
+            <FiPackage color="white" size={30} className="mx-5 cursor-pointer" />
           </Link>
           <Link to="/dashboard-messages" className="800px:block hidden">
             <BiMessageSquareDetail
-              color="#555"
+              color="white"
               size={30}
               className="mx-5 cursor-pointer"
             />
           </Link>
-            <img
-              src={`${user?.avatar?.url}`}
-              alt=""
-              className="w-[50px] h-[50px] rounded-full object-cover"
-            />
+          <img
+            src={`${user?.avatar?.url}`}
+            alt=""
+            className="w-[50px] h-[50px] rounded-full object-cover"
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default AdminHeader

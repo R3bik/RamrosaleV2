@@ -19,6 +19,7 @@ const Wishlist = ({ setOpenWishlist }) => {
     const newData = {...data, qty:1};
     dispatch(addTocart(newData));
     setOpenWishlist(false);
+    dispatch(removeFromWishlist(data));
   }
 
   return (
@@ -93,7 +94,7 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
         </div>
         <div>
           <BsCartPlus size={20} className="cursor-pointer" tile="Add to cart"
-           onClick={() => addToCartHandler(data)}
+          onClick={() => addToCartHandler(data)}
           />
         </div>
       </div>
