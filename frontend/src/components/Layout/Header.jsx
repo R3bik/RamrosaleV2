@@ -52,65 +52,68 @@ const Header = ({ activeHeading }) => {
   });
 
   return (
-    <>
-      <div className={`${styles.section}`}>
-        <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
-          <div>
-            <Link to="/">
-              <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-                alt=""
+    <div className="font-Roboto">
+      <div className="bg-primary-black text-white h-[80px] flex items-center">
+        <div className={`${styles.section}`}>
+          <div className=" hidden 800px:h-[50px]  800px:my-[20px] 800px:flex items-center justify-between">
+            <div>
+              <Link to="/">
+                <h3 className="text-2xl font-bold">
+                  Ramro<span className="text-[#76ABAE]">Sale</span>
+                </h3>
+              </Link>
+            </div>
+            {/* search box */}
+            <div className="w-[50%] relative">
+              <input
+                type="text"
+                placeholder="Search Product..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md text-black"
               />
-            </Link>
-          </div>
-          {/* search box */}
-          <div className="w-[50%] relative">
-            <input
-              type="text"
-              placeholder="Search Product..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
-            />
-            <AiOutlineSearch
-              size={30}
-              className="absolute right-2 top-1.5 cursor-pointer"
-            />
-            {searchData && searchData.length !== 0 ? (
-              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
-                {searchData &&
-                  searchData.map((i, index) => {
-                    return (
-                      <Link to={`/product/${i._id}`}>
-                        <div className="w-full flex items-start-py-3">
-                          <img
-                            src={`${i.images[0]?.url}`}
-                            alt=""
-                            className="w-[40px] h-[40px] mr-[10px]"
-                          />
-                          <h1>{i.name}</h1>
-                        </div>
-                      </Link>
-                    );
-                  })}
-              </div>
-            ) : null}
-          </div>
+              <AiOutlineSearch
+                size={30}
+                className="absolute right-2 top-1.5 cursor-pointer text-black"
+              />
+              {searchData && searchData.length !== 0 ? (
+                <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                  {searchData &&
+                    searchData.map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`}>
+                          <div className="w-full flex items-start-py-3">
+                            <img
+                              src={`${i.images[0]?.url}`}
+                              alt=""
+                              className="w-[40px] h-[40px] mr-[10px]"
+                            />
+                            <h1 className="text-black">{i.name}</h1>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              ) : null}
+            </div>
 
-          <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
+            <div className="w-[150px] bg-third h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer">
+              <div className={`${styles.button}`}>
+                <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+                  <h1 className="text-gray-800 flex items-center">
+                    {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+                    <IoIosArrowForward className="ml-1" />
+                  </h1>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}
+        } transition hidden 800px:flex items-center justify-between w-full bg-secondary-black h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -149,7 +152,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpenWishlist(true)}
               >
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {wishlist && wishlist.length}
                 </span>
               </div>
@@ -164,7 +167,7 @@ const Header = ({ activeHeading }) => {
                   size={30}
                   color="rgb(255 255 255 / 83%)"
                 />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {cart && cart.length}
                 </span>
               </div>
@@ -229,7 +232,7 @@ const Header = ({ activeHeading }) => {
               onClick={() => setOpenCart(true)}
             >
               <AiOutlineShoppingCart size={30} />
-              <span class="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+              <span class="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                 {cart && cart.length}
               </span>
             </div>
@@ -254,7 +257,7 @@ const Header = ({ activeHeading }) => {
                     onClick={() => setOpenWishlist(true) || setOpen(false)}
                   >
                     <AiOutlineHeart size={30} className="mt-5 ml-3" />
-                    <span class="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+                    <span class="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                       {wishlist && wishlist.length}
                     </span>
                   </div>
@@ -341,7 +344,7 @@ const Header = ({ activeHeading }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

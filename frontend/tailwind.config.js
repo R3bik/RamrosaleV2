@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       Roboto: ["Roboto", "sans-serif"],
-      Poppins: ['Poppins', "sans-serif"],
+      Poppins: ["Poppins", "sans-serif"],
     },
     extend: {
       screens: {
@@ -13,7 +13,13 @@ module.exports = {
         "1100px": "1110px",
         "800px": "800px",
         "1300px": "1300px",
-        "400px":"400px"
+        "400px": "400px",
+      },
+      colors: {
+        "primary-black": "#222831",
+        "secondary-black": "#31363F",
+        third: "#76ABAE",
+        primarybg: "#EEEEEE",
       },
     },
   },
