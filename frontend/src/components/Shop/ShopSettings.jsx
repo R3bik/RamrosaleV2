@@ -96,11 +96,7 @@ const ShopSettings = () => {
         </div>
 
         {/* shop info */}
-        <form
-          aria-aria-required={true}
-          className="flex flex-col items-center"
-          onSubmit={updateHandler}
-        >
+        <form className="flex flex-col items-center" onSubmit={updateHandler}>
           <div className="w-[100%] flex items-center flex-col 800px:w-[50%] mt-5">
             <div className="w-full pl-[3%]">
               <label className="block pb-2">Shop Name</label>
@@ -176,7 +172,7 @@ const ShopSettings = () => {
             <input
               type="submit"
               value="Update Shop"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} border bg-third text-white !w-[95%] mb-4 800px:mb-0`}
               required
               readOnly
             />
