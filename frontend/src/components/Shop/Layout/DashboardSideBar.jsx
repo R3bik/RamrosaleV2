@@ -11,7 +11,7 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 
 const DashboardSideBar = ({ active }) => {
   return (
-    <div className="w-full h-[89vh] bg-secondary-black shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
+    <div className="w-full h-[89vh] bg-secondary-black shadow-sm overflow-y-hidden  top-0 left-0 z-10">
       {/* single item */}
       <div className="w-full flex items-center p-4">
         <Link to="/dashboard" className="w-full flex items-center">
@@ -163,7 +163,7 @@ const DashboardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      {/* <div className="w-full flex items-center p-4">
+      <div className="w-full flex items-center p-4">
         <Link to="/dashboard-refunds" className="w-full flex items-center">
           <HiOutlineReceiptRefund
             size={30}
@@ -177,7 +177,7 @@ const DashboardSideBar = ({ active }) => {
             Refunds
           </h5>
         </Link>
-      </div> */}
+      </div>
 
       <div className="w-full flex items-center p-4">
         <Link to="/settings" className="w-full flex items-center">
