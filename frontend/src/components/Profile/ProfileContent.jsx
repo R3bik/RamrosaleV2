@@ -9,7 +9,7 @@ import { server } from "../../server";
 import styles from "../../styles/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import {
@@ -30,7 +30,7 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [ setAvatar] = useState(null);
+  const [setAvatar] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ProfileContent = ({ active }) => {
       toast.success(successMessage);
       dispatch({ type: "clearMessages" });
     }
-  }, [error, successMessage,dispatch]);
+  }, [error, successMessage, dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -207,7 +207,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, [dispatch,user._id]);
+  }, [dispatch, user._id]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -292,7 +292,7 @@ const AllRefundOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, [dispatch,user._id]);
+  }, [dispatch, user._id]);
 
   const eligibleOrders =
     orders && orders.filter((item) => item.status === "Processing refund");
@@ -380,7 +380,7 @@ const TrackOrder = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, [dispatch,user._id]);
+  }, [dispatch, user._id]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -462,10 +462,35 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const passwordChangeHandler = async (e) => {
     e.preventDefault();
 
+    // Password validation logic
+    if (newPassword.length < 6) {
+      setPasswordError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    if (!/\W/.test(newPassword)) {
+      setPasswordError("Password must contain at least one special character.");
+      return;
+    }
+
+    if (newPassword === oldPassword) {
+      setPasswordError("New password should not be the same as old password.");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Passwords do not match.");
+      return;
+    }
+
+    // If all validations pass, update the password
     await axios
       .put(
         `${server}/user/update-user-password`,
@@ -477,11 +502,14 @@ const ChangePassword = () => {
         setOldPassword("");
         setNewPassword("");
         setConfirmPassword("");
+        setPasswordError("");
+        window.location.reload();
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
   };
+
   return (
     <div className="w-full px-5">
       <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">
@@ -492,7 +520,7 @@ const ChangePassword = () => {
           onSubmit={passwordChangeHandler}
           className="flex flex-col items-center"
         >
-          <div className=" w-[100%] 800px:w-[50%] mt-5">
+          <div className="w-full 800px:w-[50%] mt-5">
             <label className="block pb-2">Enter your old password</label>
             <input
               type="password"
@@ -502,7 +530,7 @@ const ChangePassword = () => {
               onChange={(e) => setOldPassword(e.target.value)}
             />
           </div>
-          <div className=" w-[100%] 800px:w-[50%] mt-2">
+          <div className="w-full 800px:w-[50%] mt-2">
             <label className="block pb-2">Enter your new password</label>
             <input
               type="password"
@@ -512,8 +540,8 @@ const ChangePassword = () => {
               onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
-          <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your confirm password</label>
+          <div className="w-full 800px:w-[50%] mt-2">
+            <label className="block pb-2">Confirm your new password</label>
             <input
               type="password"
               className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
@@ -521,13 +549,18 @@ const ChangePassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <input
-              className={`w-[95%] h-[40px] border bg-third text-center text-[white] rounded-[3px] mt-8 cursor-pointer`}
-              required
-              value="Update"
-              type="submit"
-            />
           </div>
+          {passwordError && (
+            <div className="w-full 800px:w-[50%] text-red-600 text-sm">
+              {passwordError}
+            </div>
+          )}
+          <input
+            className={`w-[250px] h-[40px] border bg-third text-center text-[white] rounded-[3px] mt-8 cursor-pointer`}
+            required
+            value="Update"
+            type="submit"
+          />
         </form>
       </div>
     </div>
