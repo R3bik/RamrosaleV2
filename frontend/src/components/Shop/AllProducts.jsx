@@ -48,13 +48,13 @@ const AllProducts = () => {
       flex: 0.5,
     },
 
-    {
-      field: "sold",
-      headerName: "Sold out",
-      type: "number",
-      minWidth: 130,
-      flex: 0.6,
-    },
+    // {
+    //   field: "sold",
+    //   headerName: "Sold out",
+    //   type: "number",
+    //   minWidth: 130,
+    //   flex: 0.6,
+    // },
     {
       field: "Preview",
       flex: 0.8,
