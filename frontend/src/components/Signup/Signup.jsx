@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -7,12 +7,13 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
-const Singup = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [passwordError, setPasswordError] = useState("");
 
   const handleFileInputChange = (e) => {
     const reader = new FileReader();
@@ -26,8 +27,20 @@ const Singup = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validatePassword(password)) {
+      toast.error(
+        "Password must be at least 6 characters long and contain at least one special character."
+      );
+      return;
+    }
 
     axios
       .post(`${server}/user/create-user`, { name, email, password, avatar })
@@ -36,7 +49,9 @@ const Singup = () => {
         setName("");
         setEmail("");
         setPassword("");
-        setAvatar();
+        setAvatar(null);
+        setPasswordError("");
+        window.location.reload();
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -55,7 +70,7 @@ const Singup = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
                 Full Name
@@ -63,7 +78,7 @@ const Singup = () => {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="text"
+                  name="name"
                   autoComplete="name"
                   required
                   value={name}
@@ -124,6 +139,9 @@ const Singup = () => {
                   />
                 )}
               </div>
+              {passwordError && (
+                <p className="mt-2 text-sm text-red-600">{passwordError}</p>
+              )}
             </div>
 
             <div>
@@ -181,4 +199,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Signup;
