@@ -30,7 +30,7 @@ const CreateProduct = () => {
       navigate("/dashboard");
       window.location.reload();
     }
-  }, [dispatch, error, success,navigate]);
+  }, [dispatch, error, success, navigate]);
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -180,13 +180,20 @@ const CreateProduct = () => {
           </label>
           <input
             type="number"
-            name="price"
+            name="stock"
             value={stock}
+            min="0"
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            onChange={(e) => setStock(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value >= 0) {
+                setStock(value);
+              }
+            }}
             placeholder="Enter your product stock..."
           />
         </div>
+
         <br />
         <div>
           <label className="pb-2">

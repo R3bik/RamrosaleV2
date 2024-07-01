@@ -44,7 +44,6 @@ export const createProduct =
     }
   };
 
-// get All Products of a shop
 export const getAllProductsShop = (id) => async (dispatch) => {
   try {
     dispatch({
@@ -54,6 +53,7 @@ export const getAllProductsShop = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `${server}/product/get-all-products-shop/${id}`
     );
+
     dispatch({
       type: "getAllProductsShopSuccess",
       payload: data.products,
@@ -66,7 +66,6 @@ export const getAllProductsShop = (id) => async (dispatch) => {
   }
 };
 
-// delete product of a shop
 export const deleteProduct = (id, callback) => async (dispatch) => {
   try {
     dispatch({ type: "deleteProductRequest" });
@@ -91,7 +90,6 @@ export const deleteProduct = (id, callback) => async (dispatch) => {
   }
 };
 
-// get all products
 export const getAllProducts = () => async (dispatch) => {
   try {
     dispatch({
@@ -99,6 +97,7 @@ export const getAllProducts = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(`${server}/product/get-all-products`);
+
     dispatch({
       type: "getAllProductsSuccess",
       payload: data.products,
@@ -110,3 +109,48 @@ export const getAllProducts = () => async (dispatch) => {
     });
   }
 };
+
+export const getProductDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "getProductDetailsRequest",
+    });
+
+    const { data } = await axios.get(`${server}/product/${id}`);
+
+    dispatch({
+      type: "getProductDetailsSuccess",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "getProductDetailsFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const updateProduct =
+  (id, productData, callback) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "updateProductRequest",
+      });
+
+      const { data } = await axios.put(`${server}/product/${id}`, productData);
+
+      dispatch({
+        type: "updateProductSuccess",
+        payload: data.product,
+      });
+
+      if (callback) callback(true); // Execute callback with success
+    } catch (error) {
+      dispatch({
+        type: "updateProductFailed",
+        payload: error.response.data.message,
+      });
+
+      if (callback) callback(false); // Execute callback with failure
+    }
+  };

@@ -1,11 +1,10 @@
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import React, { useEffect } from "react";
-import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEye, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/product";
-import { deleteProduct } from "../../redux/actions/product";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllProductsShop, deleteProduct } from "../../redux/actions/product";
 import Loader from "../Layout/Loader";
 
 const AllProducts = () => {
@@ -13,10 +12,11 @@ const AllProducts = () => {
   const { seller } = useSelector((state) => state.seller);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProductsShop(seller._id));
-  }, [dispatch,seller._id]);
+  }, [dispatch, seller._id]);
 
   const handleDelete = (id) => {
     dispatch(
@@ -41,20 +41,19 @@ const AllProducts = () => {
       flex: 0.6,
     },
     {
-      field: "Stock",
+      field: "stock",
       headerName: "Stock",
       type: "number",
       minWidth: 80,
       flex: 0.5,
     },
-
-    {
-      field: "sold",
-      headerName: "Sold out",
-      type: "number",
-      minWidth: 130,
-      flex: 0.6,
-    },
+    // {
+    //   field: "sold",
+    //   headerName: "Sold out",
+    //   type: "number",
+    //   minWidth: 130,
+    //   flex: 0.6,
+    // },
     {
       field: "Preview",
       flex: 0.8,
@@ -70,6 +69,23 @@ const AllProducts = () => {
                 <AiOutlineEye size={20} />
               </Button>
             </Link>
+          </>
+        );
+      },
+    },
+    {
+      field: "Edit",
+      flex: 0.8,
+      minWidth: 100,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Button onClick={() => navigate(`/edit-product/${params.id}`)}>
+              <AiOutlineEdit size={20} />
+            </Button>
           </>
         );
       },
@@ -101,7 +117,7 @@ const AllProducts = () => {
         id: item._id,
         name: item.name,
         price: "US$ " + item.discountPrice,
-        Stock: item.stock,
+        stock: item.stock,
         sold: item?.sold_out,
       });
     });
