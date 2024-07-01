@@ -15,7 +15,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
-  }, [dispatch,seller._id]);
+  }, [dispatch, seller._id]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -74,9 +74,10 @@ const AllOrders = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.length,
-        total: "US$ " + item.totalPrice,
-        status: item.status,
+        itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
+        total: item?.totalPrice + " $",
+        status: item?.status,
+        createdAt: item?.createdAt.slice(0, 10),
       });
     });
 
