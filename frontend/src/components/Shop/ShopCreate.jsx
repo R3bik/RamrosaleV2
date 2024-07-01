@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -10,15 +10,22 @@ import { RxAvatar } from "react-icons/rx";
 const ShopCreate = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState();
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [zipCode, setZipCode] = useState();
-  const [avatar, setAvatar] = useState();
+  const [zipCode, setZipCode] = useState("");
+  const [avatar, setAvatar] = useState(null);
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validatePassword(password)) {
+      toast.error(
+        "Password must be at least 6 characters long and contain at least one special character."
+      );
+      return;
+    }
 
     axios
       .post(`${server}/shop/create-shop`, {
@@ -35,14 +42,20 @@ const ShopCreate = () => {
         setName("");
         setEmail("");
         setPassword("");
-        setAvatar();
-        setZipCode();
+        setAvatar(null);
+        setZipCode("");
         setAddress("");
-        setPhoneNumber();
+        setPhoneNumber("");
+        window.location.reload();
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
+  };
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[!@#$%^&*])/;
+    return password.length >= 6 && regex.test(password);
   };
 
   const handleFileInputChange = (e) => {
@@ -69,14 +82,14 @@ const ShopCreate = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
                 Shop Name
               </label>
               <div className="mt-1">
                 <input
-                  type="name"
+                  type="text"
                   name="name"
                   required
                   value={name}
@@ -88,14 +101,14 @@ const ShopCreate = () => {
 
             <div>
               <label
-                htmlFor="email"
+                htmlFor="phone-number"
                 className="block text-sm font-medium text-gray-700"
               >
                 Phone Number
               </label>
               <div className="mt-1">
                 <input
-                  type="number"
+                  type="text"
                   name="phone-number"
                   required
                   value={phoneNumber}
@@ -127,14 +140,14 @@ const ShopCreate = () => {
 
             <div>
               <label
-                htmlFor="email"
+                htmlFor="address"
                 className="block text-sm font-medium text-gray-700"
               >
                 Address
               </label>
               <div className="mt-1">
                 <input
-                  type="address"
+                  type="text"
                   name="address"
                   required
                   value={address}
@@ -146,14 +159,14 @@ const ShopCreate = () => {
 
             <div>
               <label
-                htmlFor="email"
+                htmlFor="zipcode"
                 className="block text-sm font-medium text-gray-700"
               >
                 Zip Code
               </label>
               <div className="mt-1">
                 <input
-                  type="number"
+                  type="text"
                   name="zipcode"
                   required
                   value={zipCode}

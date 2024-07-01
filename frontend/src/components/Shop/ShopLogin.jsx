@@ -27,7 +27,7 @@ const ShopLogin = () => {
       .then((res) => {
         toast.success("Login Success!");
         navigate("/dashboard");
-        window.location.reload(true); 
+        window.location.reload(true);
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -96,7 +96,7 @@ const ShopLogin = () => {
               </div>
             </div>
             <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
+              {/* <div className={`${styles.noramlFlex}`}>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -117,7 +117,7 @@ const ShopLogin = () => {
                 >
                   Forgot your password?
                 </a>
-              </div>
+              </div> */}
             </div>
             <div>
               <button
