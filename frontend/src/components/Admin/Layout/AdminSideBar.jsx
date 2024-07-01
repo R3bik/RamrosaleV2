@@ -2,11 +2,11 @@ import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
 // import { GrWorkshop } from "react-icons/gr";
 import { RxDashboard } from "react-icons/rx";
-import { CiMoneyBill,} from "react-icons/ci";
+// import { CiMoneyBill,} from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { HiOutlineUserGroup, HiUsers } from "react-icons/hi";
 import { BsHandbag } from "react-icons/bs";
-import { MdOutlineLocalOffer } from "react-icons/md";
+// import { MdOutlineLocalOffer } from "react-icons/md";
 import { AiOutlineSetting } from "react-icons/ai";
 
 const AdminSideBar = ({ active }) => {
@@ -93,7 +93,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      {/* <div className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
             size={30}
@@ -107,9 +107,9 @@ const AdminSideBar = ({ active }) => {
             All Events
           </h5>
         </Link>
-      </div>
+      </div> */}
 
-      <div className="w-full flex items-center p-4">
+      {/* <div className="w-full flex items-center p-4">
         <Link to="/admin-withdraw-request" className="w-full flex items-center">
           <CiMoneyBill
             size={30}
@@ -123,7 +123,7 @@ const AdminSideBar = ({ active }) => {
             Withdraw Request
           </h5>
         </Link>
-      </div>
+      </div> */}
 
       <div className="w-full flex items-center p-4">
         <Link to="/profile" className="w-full flex items-center">
