@@ -4,8 +4,8 @@ import styles from "../../styles/styles";
 import { useEffect } from "react";
 import {
   CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement,
+  // CardCvcElement,
+  // CardExpiryElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
