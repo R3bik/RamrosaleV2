@@ -19,6 +19,18 @@ const AllOrders = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    {
+      field: "user",
+      headerName: "User",
+      minWidth: 130,
+      flex: 0.7,
+    },
+    {
+      field: "product",
+      headerName: "Product",
+      minWidth: 130,
+      flex: 0.7,
+    },
 
     {
       field: "status",
@@ -31,6 +43,7 @@ const AllOrders = () => {
           : "redColor";
       },
     },
+
     {
       field: "itemsQty",
       headerName: "Items Qty",
@@ -71,13 +84,20 @@ const AllOrders = () => {
   const row = [];
 
   orders &&
-    orders.forEach((item) => {
+    orders.forEach((order) => {
+      // Extract all product names from the cart
+      const productNames = order.cart
+        .map((cartItem) => cartItem.name)
+        .join(", ");
+
       row.push({
-        id: item._id,
-        itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
-        total: item?.totalPrice + " $",
-        status: item?.status,
-        createdAt: item?.createdAt.slice(0, 10),
+        id: order._id,
+        user: order.user.name,
+        product: productNames,
+        itemsQty: order?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
+        total: order?.totalPrice + " $",
+        status: order?.status,
+        createdAt: order?.createdAt.slice(0, 10),
       });
     });
 
