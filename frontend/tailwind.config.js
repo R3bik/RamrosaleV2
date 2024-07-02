@@ -20,6 +20,9 @@ module.exports = {
         "secondary-black": "#31363F",
         third: "#76ABAE",
         primarybg: "#EEEEEE",
+        greenColor: "#00ff00", // Added custom green color
+        redColor: "#ff0000",
+        yellowColor:	"#FFFF00",
       },
     },
   },
