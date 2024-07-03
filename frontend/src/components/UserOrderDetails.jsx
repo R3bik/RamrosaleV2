@@ -10,7 +10,6 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 const UserOrderDetails = () => {
   const { orders } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.user);
@@ -29,28 +28,31 @@ const UserOrderDetails = () => {
   const data = orders && orders.find((item) => item._id === id);
 
   const reviewHandler = async (e) => {
-    await axios
-      .put(
+    if (!selectedItem) {
+      toast.error("No item selected for review.");
+      return;
+    }
+
+    try {
+      const response = await axios.put(
         `${server}/product/create-new-review`,
         {
           user,
           rating,
           comment,
-          productId: selectedItem?._id,
+          productId: selectedItem._id,
           orderId: id,
         },
         { withCredentials: true }
-      )
-      .then((res) => {
-        toast.success(res.data.message);
-        dispatch(getAllOrdersOfUser(user._id));
-        setComment("");
-        setRating(null);
-        setOpen(false);
-      })
-      .catch((error) => {
-        toast.error(error);
-      });
+      );
+      toast.success(response.data.message);
+      dispatch(getAllOrdersOfUser(user._id));
+      setComment("");
+      setRating(1);
+      setOpen(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   const refundHandler = async () => {
