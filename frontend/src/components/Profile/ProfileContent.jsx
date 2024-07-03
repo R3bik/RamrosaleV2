@@ -307,8 +307,6 @@ const AllRefundOrders = () => {
       flex: 0.7,
       cellClassName: (params) => {
         const status = params.getValue(params.id, "status");
-
-        // Determine the class based on status
         if (status === "Delivered") return "text-greenColor";
         if (status === "Cancelled") return "text-redColor";
         return "text-yellowColor";

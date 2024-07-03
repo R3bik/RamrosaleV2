@@ -72,8 +72,8 @@ const Faq = () => {
             <div className="mt-4">
               <p className="text-base text-gray-500">
                 If you're not satisfied with your purchase, we accept returns
-                within 7 days of delivery. To initiate a return, please email
-                us at ramrosalebusiness@gmail.com with your order number and a
+                within 7 days of delivery. To initiate a return, please email us
+                at ramrosalebusiness@gmail.com with your order number and a
                 brief explanation of why you're returning the item.
               </p>
             </div>
@@ -124,6 +124,58 @@ const Faq = () => {
                 You can track your order by clicking the tracking link in your
                 shipping confirmation email, or by logging into your account on
                 our website and viewing the order details.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="border-b border-gray-200 pb-4">
+          <button
+            className="flex items-center justify-between w-full"
+            onClick={() => toggleTab(8)}
+          >
+            <span className="text-lg font-medium text-gray-900">
+              How do i write a review for the Products?
+            </span>
+            {activeTab === 8 ? (
+              <svg
+                className="h-6 w-6 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="h-6 w-6 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            )}
+          </button>
+          {activeTab === 8 && (
+            <div className="mt-4">
+              <p className="text-base text-gray-500">
+                "To write a review for a product, please ensure you have
+                purchased it first. Once purchased, navigate to your profile and
+                click on 'Orders.' Locate the specific order containing the
+                product you wish to review and click the arrow key or 'View
+                Details' to access the product. From there, you can write and
+                submit your review. Your feedback is valuable to us!"
               </p>
             </div>
           )}
@@ -219,12 +271,12 @@ const Faq = () => {
           {activeTab === 5 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                Unfortunately, we don't have the direct method to cancel the order but 
-                once an order has been placed and you want to cancel it then 
-                you can send message to the seller through our website and tell them 
-                to cancel your order. And If you no longer want the items
-                you've ordered, you can return them for a refund within 7 days
-                of delivery without damaging the items.
+                Unfortunately, we don't have the direct method to cancel the
+                order but once an order has been placed and you want to cancel
+                it then you can send message to the seller through our website
+                and tell them to cancel your order. And If you no longer want
+                the items you've ordered, you can return them for a refund
+                within 7 days of delivery without damaging the items.
               </p>
             </div>
           )}
@@ -318,8 +370,8 @@ const Faq = () => {
           {activeTab === 7 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                We accept paypal payment method also we have
-                cash on delivery system.
+                We accept paypal payment method also we have cash on delivery
+                system.
               </p>
             </div>
           )}
