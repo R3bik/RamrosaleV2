@@ -306,9 +306,12 @@ const AllRefundOrders = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
+        const status = params.getValue(params.id, "status");
+
+        // Determine the class based on status
+        if (status === "Delivered") return "text-greenColor";
+        if (status === "Cancelled") return "text-redColor";
+        return "text-yellowColor";
       },
     },
     {
@@ -391,9 +394,10 @@ const TrackOrder = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
+        const status = params.getValue(params.id, "status");
+        if (status === "Delivered") return "text-greenColor";
+        if (status === "Cancelled") return "text-redColor";
+        return "text-yellowColor";
       },
     },
     {

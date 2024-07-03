@@ -115,11 +115,11 @@ const Footer = () => {
             alt=""
             className="w-[80px] h-[32px]"
           />
-          <img
+          {/* <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
             alt=""
             className="w-[80px] h-[36px]"
-          />
+          /> */}
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
             alt=""
