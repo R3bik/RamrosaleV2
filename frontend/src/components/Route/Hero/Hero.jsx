@@ -15,20 +15,27 @@ const Hero = () => {
         <h1
           className={`text-[35px] leading-[1.2] 800px:text-[60px] text-[#3d3a3a] font-[600] capitalize`}
         >
-          Best Collection for <br /> home Decoration
+          Transforming shopping
+          <br /> into an experience
         </h1>
         <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-          assumenda? Quisquam itaque <br /> exercitationem labore vel, dolore
-          quidem asperiores, laudantium temporibus soluta optio consequatur{" "}
-          <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
+          Welcome to RamroSale, where we believe in transforming shopping into
+          an experience. Dive into a<br /> world where every click brings you
+          closer to discovering unique products curated just for you. Our
+          <br /> platform combines convenience with curated collections,
+          ensuring that your shopping journey is not
+          <br /> just effortless but memorable. Whether you're searching for
+          fashion must-haves, home essentials,
+          <br /> or tech innovations, RamroSale is your gateway to a seamless
+          online shopping experience. Start
+          <br /> exploring today and let us redefine how you shop.
         </p>
         <Link to="/products" className="inline-block">
-            <div className={`${styles.button} mt-5`}>
-                 <span className="text-[#fff] font-[Poppins] text-[18px]">
-                    Shop Now
-                 </span>
-            </div>
+          <div className={`${styles.button} mt-5`}>
+            <span className="text-[#fff] font-[Poppins] text-[18px]">
+              Shop Now
+            </span>
+          </div>
         </Link>
       </div>
     </div>
