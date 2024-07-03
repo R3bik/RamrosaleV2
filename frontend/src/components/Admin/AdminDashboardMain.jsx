@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import styles from "../../styles/styles";
-import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
+import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdBorderClear } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../../redux/actions/order";
 import Loader from "../Layout/Loader";
@@ -19,7 +19,7 @@ const AdminDashboardMain = () => {
   useEffect(() => {
     dispatch(getAllOrdersOfAdmin());
     dispatch(getAllSellers());
-  }, []);
+  }, [dispatch]);
 
    const adminEarning = adminOrders && adminOrders.reduce((acc,item) => acc + item.totalPrice * .10, 0);
 
@@ -35,9 +35,10 @@ const AdminDashboardMain = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
+        const status = params.getValue(params.id, "status");
+        if (status === "Delivered") return "text-greenColor";
+        if (status === "Cancelled") return "text-redColor";
+        return "text-yellowColor";
       },
     },
     {

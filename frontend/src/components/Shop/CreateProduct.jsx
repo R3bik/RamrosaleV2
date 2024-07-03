@@ -175,7 +175,12 @@ const CreateProduct = () => {
             name="originalPrice"
             value={originalPrice}
             className="mt-2 block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            onChange={(e) => setOriginalPrice(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value >= 0) {
+                setOriginalPrice(value);
+              }
+            }}
             placeholder="Enter your product price..."
           />
         </div>
@@ -189,7 +194,13 @@ const CreateProduct = () => {
             name="discountPrice"
             value={discountPrice}
             className="mt-2 block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            onChange={(e) => setDiscountPrice(e.target.value)}
+            // onChange={(e) => setDiscountPrice(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value >= 0) {
+                setDiscountPrice(value);
+              }
+            }}
             placeholder="Enter your product price with discount..."
             required
           />

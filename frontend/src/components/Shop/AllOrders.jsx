@@ -38,12 +38,12 @@ const AllOrders = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "green"
-          : "redColor";
+        const status = params.getValue(params.id, "status");
+        if (status === "Delivered") return "text-greenColor";
+        if (status === "Cancelled") return "text-redColor";
+        return "text-yellowColor";
       },
     },
-
     {
       field: "itemsQty",
       headerName: "Items Qty",
