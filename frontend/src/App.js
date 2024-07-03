@@ -61,7 +61,7 @@ import axios from "axios";
 import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import EditProduct from "./components/Shop/EditProduct.jsx";
+// import EditProduct from "./components/Shop/EditProduct.jsx";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");

@@ -9,7 +9,7 @@ import { server } from "../../server";
 import styles from "../../styles/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import {
@@ -463,8 +463,8 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const { user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  // const { user } = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
 
   const passwordChangeHandler = async (e) => {
     e.preventDefault();

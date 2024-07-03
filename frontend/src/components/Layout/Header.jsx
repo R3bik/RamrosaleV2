@@ -15,7 +15,7 @@ import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
-import { RxCross1 } from "react-icons/rx";
+// import { RxCross1 } from "react-icons/rx";
 import { logo } from "../../routes/Routes";
 
 const Header = ({ activeHeading }) => {
@@ -30,7 +30,7 @@ const Header = ({ activeHeading }) => {
   const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const searchBoxRef = useRef(null);
 
   const handleSearchChange = (e) => {

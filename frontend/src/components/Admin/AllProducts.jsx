@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { deleteProduct } from "../../redux/actions/product";
-import Loader from "../Layout/Loader";
+// import Loader from "../Layout/Loader";
 import axios from "axios";
 import { server } from "../../server";
 import { useState } from "react";
