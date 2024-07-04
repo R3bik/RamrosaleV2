@@ -16,7 +16,7 @@ const ChatComponent = () => {
 
       const newMessage = { name: "User", message: textInput };
       const responseMessage = {
-        name: "Chatbot",
+        name: "Saly",
         message: response.data.answer,
       };
 
@@ -75,7 +75,7 @@ const ChatComponent = () => {
                 <div
                   key={index}
                   className={`p-2 rounded-lg ${
-                    msg.name === "Chatbot" ? "bg-gray-200" : "bg-blue-200"
+                    msg.name === "Saly" ? "bg-gray-200" : "bg-blue-200"
                   }`}
                 >
                   <div className="font-semibold">{msg.name}</div>
