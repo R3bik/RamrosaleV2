@@ -13,7 +13,7 @@ const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
-  const { user,loading } = useSelector((state) => state.user);
+  const { user, loading } = useSelector((state) => state.user);
   const [conversations, setConversations] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [currentChat, setCurrentChat] = useState();
@@ -161,7 +161,6 @@ const UserInbox = () => {
   };
 
   const imageSendingHandler = async (e) => {
-
     const receiverId = currentChat.members.find(
       (member) => member !== user._id
     );
@@ -174,15 +173,12 @@ const UserInbox = () => {
 
     try {
       await axios
-        .post(
-          `${server}/message/create-new-message`,
-          {
-            images: e,
-            sender: user._id,
-            text: newMessage,
-            conversationId: currentChat._id,
-          }
-        )
+        .post(`${server}/message/create-new-message`, {
+          images: e,
+          sender: user._id,
+          text: newMessage,
+          conversationId: currentChat._id,
+        })
         .then((res) => {
           setImages();
           setMessages([...messages, res.data.message]);
@@ -227,7 +223,6 @@ const UserInbox = () => {
                 me={user?._id}
                 setUserData={setUserData}
                 userData={userData}
-                online={onlineCheck(item)}
                 setActiveStatus={setActiveStatus}
                 loading={loading}
               />
@@ -263,7 +258,7 @@ const MessageList = ({
   userData,
   online,
   setActiveStatus,
-  loading
+  loading,
 }) => {
   const [active, setActive] = useState(0);
   const [user, setUser] = useState([]);
@@ -285,7 +280,7 @@ const MessageList = ({
       }
     };
     getUser();
-  }, [me, data,online,setActiveStatus]);
+  }, [me, data, online, setActiveStatus]);
 
   return (
     <div
@@ -306,11 +301,11 @@ const MessageList = ({
           alt=""
           className="w-[50px] h-[50px] rounded-full"
         />
-        {online ? (
+        {/* {online ? (
           <div className="w-[12px] h-[12px] bg-green-400 rounded-full absolute top-[2px] right-[2px]" />
         ) : (
           <div className="w-[12px] h-[12px] bg-[#c7b9b9] rounded-full absolute top-[2px] right-[2px]" />
-        )}
+        )} */}
       </div>
       <div className="pl-3">
         <h1 className="text-[18px]">{user?.name}</h1>
@@ -333,7 +328,7 @@ const SellerInbox = ({
   messages,
   sellerId,
   userData,
-  activeStatus,
+
   scrollRef,
   handleImageUpload,
 }) => {
@@ -349,7 +344,7 @@ const SellerInbox = ({
           />
           <div className="pl-3">
             <h1 className="text-[18px] font-[600]">{userData?.name}</h1>
-            <h1>{activeStatus ? "Active Now" : ""}</h1>
+            {/* <h1>{activeStatus ? "Active Now" : ""}</h1> */}
           </div>
         </div>
         <AiOutlineArrowRight
@@ -407,7 +402,7 @@ const SellerInbox = ({
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
-        <div className="w-[30px]">
+        {/* <div className="w-[30px]">
           <input
             type="file"
             name=""
@@ -418,7 +413,7 @@ const SellerInbox = ({
           <label htmlFor="image">
             <TfiGallery className="cursor-pointer" size={20} />
           </label>
-        </div>
+        </div> */}
         <div className="w-full">
           <input
             type="text"

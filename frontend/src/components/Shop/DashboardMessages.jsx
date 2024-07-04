@@ -224,7 +224,6 @@ const DashboardMessages = () => {
                 me={seller._id}
                 setUserData={setUserData}
                 userData={userData}
-                online={onlineCheck(item)}
                 setActiveStatus={setActiveStatus}
                 isLoading={isLoading}
               />
@@ -241,7 +240,6 @@ const DashboardMessages = () => {
           messages={messages}
           sellerId={seller._id}
           userData={userData}
-          activeStatus={activeStatus}
           scrollRef={scrollRef}
           setMessages={setMessages}
           handleImageUpload={handleImageUpload}
@@ -304,11 +302,11 @@ const MessageList = ({
           alt=""
           className="w-[50px] h-[50px] rounded-full"
         />
-        {online ? (
+        {/* {online ? (
           <div className="w-[12px] h-[12px] bg-green-400 rounded-full absolute top-[2px] right-[2px]" />
         ) : (
           <div className="w-[12px] h-[12px] bg-[#c7b9b9] rounded-full absolute top-[2px] right-[2px]" />
-        )}
+        )} */}
       </div>
       <div className="pl-3">
         <h1 className="text-[18px]">{user?.name || "Unknown User"}</h1>
@@ -350,7 +348,7 @@ const SellerInbox = ({
             <h1 className="text-[18px] font-[600]">
               {userData?.name || "Unknown User"}
             </h1>
-            <h1>{activeStatus ? "Online" : "Offline"}</h1>
+            {/* <h1>{activeStatus ? "Online" : "Offline"}</h1> */}
           </div>
         </div>
         <AiOutlineArrowRight
@@ -407,11 +405,10 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
-        <div className="w-[30px]">
+        {/* <div className="w-[30px]">
           <input
             type="file"
             id="image"
@@ -421,7 +418,7 @@ const SellerInbox = ({
           <label htmlFor="image">
             <TfiGallery className="cursor-pointer" size={20} />
           </label>
-        </div>
+        </div> */}
         <input
           type="text"
           required

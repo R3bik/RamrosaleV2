@@ -245,6 +245,13 @@ const AllOrders = () => {
       minWidth: 130,
       flex: 0.8,
     },
+    {
+      field: "createdAt",
+      headerName: "Order Date",
+      type: "number",
+      minWidth: 130,
+      flex: 0.8,
+    },
 
     {
       field: " ",
@@ -280,6 +287,7 @@ const AllOrders = () => {
         itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
+        createdAt: item?.createdAt.slice(0, 10),
       });
     });
 
@@ -440,7 +448,13 @@ const TrackOrder = () => {
       minWidth: 130,
       flex: 0.8,
     },
-
+    {
+      field: "createdAt",
+      headerName: "Order Date",
+      type: "number",
+      minWidth: 130,
+      flex: 0.8,
+    },
     {
       field: " ",
       flex: 1,
@@ -475,6 +489,7 @@ const TrackOrder = () => {
         itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
+        createdAt: item?.createdAt.slice(0, 10),
       });
     });
 
