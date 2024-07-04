@@ -9,7 +9,7 @@ import { server } from "../../server";
 import styles from "../../styles/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import {
@@ -218,9 +218,10 @@ const AllOrders = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
+        const status = params.getValue(params.id, "status");
+        if (status === "Delivered") return "text-greenColor";
+        if (status === "Cancelled") return "text-redColor";
+        return "text-yellowColor";
       },
     },
     {
@@ -266,7 +267,7 @@ const AllOrders = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.length,
+        itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
       });
@@ -441,7 +442,7 @@ const TrackOrder = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.length,
+        itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
       });
