@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -16,14 +16,29 @@ const DashboardHero = () => {
   const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-     dispatch(getAllOrdersOfShop(seller._id));
-     dispatch(getAllProductsShop(seller._id));
-  }, [dispatch,seller._id]);
+    dispatch(getAllOrdersOfShop(seller._id));
+    dispatch(getAllProductsShop(seller._id));
+  }, [dispatch, seller._id]);
 
-  const availableBalance = seller?.availableBalance.toFixed(2);
+  const earning =
+    orders && orders.reduce((acc, item) => acc + item.totalPrice, 0);
+
+  const availableBalance = earning?.toFixed(2);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    {
+      field: "user",
+      headerName: "User",
+      minWidth: 130,
+      flex: 0.7,
+    },
+    {
+      field: "product",
+      headerName: "Product",
+      minWidth: 130,
+      flex: 0.7,
+    },
 
     {
       field: "status",
@@ -76,14 +91,20 @@ const DashboardHero = () => {
 
   const row = [];
 
-  orders && orders.forEach((item) => {
-    row.push({
+  orders &&
+    orders.forEach((item) => {
+      const productNames = item.cart
+        .map((cartItem) => cartItem.name)
+        .join(", ");
+      row.push({
         id: item._id,
+        user: item.user.name,
+        product: productNames,
         itemsQty: item.cart.reduce((acc, item) => acc + item.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
       });
-  });
+    });
   return (
     <div className="w-full p-8">
       <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
@@ -102,7 +123,9 @@ const DashboardHero = () => {
               <span className="text-[16px]">(with 10% service charge)</span>
             </h3>
           </div>
-          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">${availableBalance}</h5>
+          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
+            ${availableBalance}
+          </h5>
           {/* <Link to="/dashboard-withdraw-money">
             <h5 className="pt-4 pl-[2] text-[#077f9c]">Withdraw Money</h5>
           </Link> */}
@@ -117,7 +140,9 @@ const DashboardHero = () => {
               All Orders
             </h3>
           </div>
-          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">{orders && orders.length}</h5>
+          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
+            {orders && orders.length}
+          </h5>
           <Link to="/dashboard-orders">
             <h5 className="pt-4 pl-2 text-[#077f9c]">View Orders</h5>
           </Link>
@@ -136,7 +161,9 @@ const DashboardHero = () => {
               All Products
             </h3>
           </div>
-          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">{products && products.length}</h5>
+          <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
+            {products && products.length}
+          </h5>
           <Link to="/dashboard-products">
             <h5 className="pt-4 pl-2 text-[#077f9c]">View Products</h5>
           </Link>
@@ -144,14 +171,14 @@ const DashboardHero = () => {
       </div>
       <br />
       <h3 className="text-[22px] font-Poppins pb-2">Latest Orders</h3>
-      <div className="w-full min-h-[45vh] bg-white rounded">
-      <DataGrid
-        rows={row}
-        columns={columns}
-        pageSize={10}
-        disableSelectionOnClick
-        autoHeight
-      />
+      <div className="w-full h-[45vh] bg-white rounded overflow-y-scroll">
+        <DataGrid
+          rows={row}
+          columns={columns}
+          pageSize={10}
+          disableSelectionOnClick
+          autoHeight
+        />
       </div>
     </div>
   );
