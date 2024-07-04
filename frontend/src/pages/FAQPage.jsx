@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import styles from "../styles/styles";
+import ChatComponent from "../components/chatbot/ChatComponent";
 
 const FAQPage = () => {
   return (
-    <div>
+    <div className="relative">
       <Header activeHeading={5} />
       <Faq />
       <Footer />
+      <div className="absolute bottom-0 right-0">
+        <ChatComponent />
+      </div>
     </div>
   );
 };
