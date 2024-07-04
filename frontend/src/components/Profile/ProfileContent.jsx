@@ -211,6 +211,12 @@ const AllOrders = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    {
+      field: "product",
+      headerName: "Product",
+      minWidth: 130,
+      flex: 0.7,
+    },
 
     {
       field: "status",
@@ -265,8 +271,12 @@ const AllOrders = () => {
 
   orders &&
     orders.forEach((item) => {
+      const productNames = item.cart
+        .map((cartItem) => cartItem.name)
+        .join(", ");
       row.push({
         id: item._id,
+        product: productNames,
         itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
@@ -300,6 +310,12 @@ const AllRefundOrders = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    {
+      field: "product",
+      headerName: "Product",
+      minWidth: 130,
+      flex: 0.7,
+    },
 
     {
       field: "status",
@@ -354,8 +370,12 @@ const AllRefundOrders = () => {
 
   eligibleOrders &&
     eligibleOrders.forEach((item) => {
+      const productNames = item.cart
+        .map((cartItem) => cartItem.name)
+        .join(", ");
       row.push({
         id: item._id,
+        product: productNames,
         itemsQty: item.cart.length,
         total: "US$ " + item.totalPrice,
         status: item.status,
@@ -386,6 +406,12 @@ const TrackOrder = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    {
+      field: "product",
+      headerName: "Product",
+      minWidth: 130,
+      flex: 0.7,
+    },
 
     {
       field: "status",
@@ -440,8 +466,12 @@ const TrackOrder = () => {
 
   orders &&
     orders.forEach((item) => {
+      const productNames = item.cart
+        .map((cartItem) => cartItem.name)
+        .join(", ");
       row.push({
         id: item._id,
+        product: productNames,
         itemsQty: item?.cart?.reduce((acc, cartItem) => acc + cartItem.qty, 0),
         total: "US$ " + item.totalPrice,
         status: item.status,
