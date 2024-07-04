@@ -196,4 +196,64 @@ router.get(
     }
   })
 );
+
+// Get product details by ID
+
+router.get(
+  "/:id",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const product = await Product.findById(req.params.id);
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      res.status(200).json(product);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  })
+);
+
+router.put(
+  "/:id",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const {
+        name,
+
+        stock,
+        description,
+
+        originalPrice,
+        discountPrice,
+      } = req.body;
+
+      // Optional: Validate incoming data
+      // Example: if (!name || !price || !stock) throw new Error('Missing required fields');
+
+      const updatedProduct = await Product.findByIdAndUpdate(
+        req.params.id,
+        {
+          name,
+
+          stock,
+          description,
+
+          originalPrice,
+          discountPrice,
+        },
+        { new: true } // Return the updated document
+      );
+
+      if (!updatedProduct) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      res.status(200).json(updatedProduct);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  })
+);
+
 module.exports = router;
