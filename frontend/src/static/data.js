@@ -30,8 +30,8 @@ export const navItems = [
 export const brandingData = [
   {
     id: 1,
-    title: "Free Shipping",
-    Description: "From all orders over 100$",
+    title: "Delivery",
+    Description: "Services worldwide",
     icon: (
       <svg
         width="36"
