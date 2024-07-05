@@ -48,7 +48,7 @@ def get_response(msg):
                 return random.choice(intent['responses'])
 
     else:
-        return "Sorry! I do not understand. For more accurate information, kindly email us at <a href='mailto:barnns111@gmail.com'>barnns111@gmail.com</a>,"
+        return "Sorry! I do not understand. For more accurate information, kindly email us at ramrosalebusiness@gmail.com"
 
 
 if __name__ == "__main__":
