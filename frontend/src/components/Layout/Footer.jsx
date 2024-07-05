@@ -110,11 +110,11 @@ const Footer = () => {
         <span>© 2024 Ramrosale. All rights reserved.</span>
         <span>Terms · Privacy Policy</span>
         <div className=" flex items-center justify-start w-full gap-2">
-          <img
+          {/* <img
             src="https://seeklogo.com/images/K/khalti-logo-F0B049E67E-seeklogo.com.png"
             alt=""
             className="w-[80px] h-[32px]"
-          />
+          /> */}
           {/* <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
             alt=""
