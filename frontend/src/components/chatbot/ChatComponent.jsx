@@ -30,7 +30,7 @@ const ChatComponent = () => {
       });
 
       const responseMessage = {
-        name: "Saly",
+        name: "Ramesh",
         message: response.data.answer,
         timestamp: new Date().toLocaleTimeString(),
       };
@@ -104,24 +104,24 @@ const ChatComponent = () => {
                 <div
                   key={index}
                   className={`flex flex-col ${
-                    msg.name === "Saly" ? "items-start" : "items-end"
+                    msg.name === "Ramesh" ? "items-start" : "items-end"
                   }`}
                 >
                   <div
                     className={`flex items-center space-x-2 mb-1 ${
-                      msg.name === "Saly" ? "justify-start" : "justify-end"
+                      msg.name === "Ramesh" ? "justify-start" : "justify-end"
                     }`}
                   >
                     <span
                       className={`text-xs text-gray-500 ${
-                        msg.name === "Saly" ? "order-2" : "order-1"
+                        msg.name === "Ramesh" ? "order-2" : "order-1"
                       }`}
                     >
                       {msg.timestamp}
                     </span>
                     <span
                       className={`font-semibold ${
-                        msg.name === "Saly" ? "order-1" : "order-2"
+                        msg.name === "Ramesh" ? "order-1" : "order-2"
                       }`}
                     >
                       {msg.name}
@@ -129,7 +129,7 @@ const ChatComponent = () => {
                   </div>
                   <div
                     className={`p-3 rounded-lg max-w-[calc(100% - 2rem)] shadow overflow-hidden ${
-                      msg.name === "Saly"
+                      msg.name === "Ramesh"
                         ? "bg-gray-200 text-left"
                         : "bg-blue-500 text-white text-right"
                     }`}
@@ -145,7 +145,7 @@ const ChatComponent = () => {
               {isTyping && (
                 <div className="flex flex-col items-start">
                   <div className="flex items-center space-x-2 mb-1 justify-start">
-                    <span className="font-semibold">Saly</span>
+                    <span className="font-semibold">Ramesh</span>
                     <span className="text-xs text-gray-500">
                       {new Date().toLocaleTimeString()}
                     </span>

@@ -4,11 +4,11 @@
       "tag": "greeting",
       "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Namaste"],
       "responses": [
-        "Hey :-) My name is Saly, your in-app chatbot.!",
-        "Hello, thanks for visiting. My name is Saly!",
-        "Hi there, My name is Saly!. What can I do for you?",
-        "Hi there, My name is Saly! Welcome to RamroSale?",
-        "Namaste! I am Saly to assist you in your shopping journey :)"
+        "Hey :-) My name is Ramesh, your in-app chatbot.!",
+        "Hello, thanks for visiting. My name is Ramesh!",
+        "Hi there, My name is Ramesh!. What can I do for you?",
+        "Hi there, My name is Ramesh! Welcome to RamroSale?",
+        "Namaste! I am Ramesh to assist you in your shopping journey :)"
       ],
       "context_set": "greeting"
     },
@@ -97,7 +97,7 @@
       "responses": [
         "Visit the order page, click on the specific order, select 'track my order', and check the status"
       ],
-      "context_set": "tracking"
+      "context_set": ["tracking","order tracking","m`y order"]
     },
     {
       "tag": "delivery",
@@ -186,7 +186,8 @@
       "responses": [
         "Unfortunately, we don't have a direct method to cancel an order once it has been placed. However, you can send a message to the seller through our website and request them to cancel your order. If you no longer want the items you've ordered, you can return them for a refund within 7 days of delivery without damaging the items.",
         "Visit the my orders page to check the status of specific orders."
-      ]
+      ],
+      "context_filter":"cancel"
     },
     {
       "tag": "refund",
@@ -355,7 +356,7 @@
         "Update my order"
       ],
       "responses": [
-        "Once an order has been placed, it cannot be modified. You may cancel the order within 7 days of placement."
+        "Once an order has been placed, it cannot be modified. You may cancel the order within 7 days of placement by contacting the seller through our build in messaging function."
       ]
     },
     {
@@ -389,7 +390,8 @@
       ],
       "responses": [
         "Delivery typically takes 2-4 days. Please expect some delays during peak times."
-      ]
+      ],
+      "context_filter":"delivery"
     },
     {
       "tag": "shipping_information",
