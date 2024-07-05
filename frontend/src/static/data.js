@@ -12,10 +12,10 @@ export const navItems = [
     title: "Products",
     url: "/products",
   },
-  // {
-  //   title: "Beast Deals",
-  //   url: "/products",
-  // },
+  {
+    title: "Best Deals",
+    url: "/Best_deals",
+  },
   // {
   //   title: "Events",
   //   url: "/events",

@@ -18,6 +18,7 @@ import OrderDetailsPage from "../pages/OrderDetailsPage";
 import TrackOrderPage from "../pages/TrackOrderPage";
 import UserInbox from "../pages/UserInbox.jsx";
 import logo from "../Assests/images/logo.png";
+import BestDealsPage from "../pages/BestDealsPage.jsx";
 
 export {
   logo,
@@ -40,4 +41,5 @@ export {
   OrderDetailsPage,
   TrackOrderPage,
   UserInbox,
+  BestDealsPage,
 };
