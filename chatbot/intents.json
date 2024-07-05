@@ -177,7 +177,7 @@
         "Can I cancel an order"
       ],
       "responses": [
-      "Unfortunately, we don't have a direct method to cancel an order once it has been placed. However, you can send a message to the seller through our website and request them to cancel your order. If you no longer want the items you've ordered, you can return them for a refund within 7 days of delivery without damaging the items.",
+        "Unfortunately, we don't have a direct method to cancel an order once it has been placed. However, you can send a message to the seller through our website and request them to cancel your order. If you no longer want the items you've ordered, you can return them for a refund within 7 days of delivery without damaging the items.",
         "Visit the my orders page to check the status of specific orders."
       ]
     },
@@ -192,7 +192,7 @@
       ],
       "responses": [
         "Refund can only be issued within 7 days of placement. Digital goods do not qualify for refund.",
-        "Visit the my orders page to check for specific orders."
+        "Visit the my refund page in your profile side bar to check for specific orders."
       ]
     },
     {
@@ -222,6 +222,39 @@
       "context_set": "return"
     },
     {
+      "tag": "faq_refund_status",
+      "patterns": [
+        "Why is the status 'Refunded' when it's not credited?",
+        "Refund status issue",
+        "No refund received"
+      ],
+      "responses": [
+        "Please allow up to 30 days for the refunded amount to reflect in your account."
+      ]
+    },
+    {
+      "tag": "faq_seller_information",
+      "patterns": [
+        "How can I become a seller on your platform?",
+        "Seller registration",
+        "Sell on RamroSale"
+      ],
+      "responses": [
+        "To become a seller on RamroSale, please visit our Seller Registration page on the top right of our website page and follow the instructions."
+      ]
+    },
+    {
+      "tag": "faq_shipping_information",
+      "patterns": [
+        "Do you offer international shipping?",
+        "International delivery",
+        "Shipping outside Nepal",
+        "can deliver product outside Nepal"
+      ],
+      "responses": ["Currently, we only offer shipping within Nepal."],
+      "context_filter": ["deliver", "shipping", "delivery"]
+    },
+    {
       "tag": "faq_return_policy",
       "patterns": [
         "What is your return policy?",
@@ -232,7 +265,7 @@
       "responses": [
         "If you're not satisfied with your purchase, we accept returns within 7 days of delivery. To initiate a return, please email us at ramrosalebusiness@gmail.com with your order number and a brief explanation of why you're returning the item."
       ],
-      "context_filter":"refund"
+      "context_filter": "refund"
     },
     {
       "tag": "promotions",
@@ -267,6 +300,96 @@
       ],
       "responses": [
         "You can contact our customer support team via email at ramrosalebusiness@gmail.com"
+      ]
+    },
+    {
+      "tag": "faq_profile_management",
+      "patterns": [
+        "How can I change my profile information?",
+        "Update profile",
+        "Edit account details"
+      ],
+      "responses": [
+        "You can update your profile details by navigating to the 'Account' section and selecting 'Manage Account'."
+      ]
+    },
+    {
+      "tag": "faq_voucher_use",
+      "patterns": [
+        "How do I use a voucher?",
+        "Use voucher",
+        "Apply discount code",
+        "how to use discount code"
+      ],
+      "responses": [
+        "You can apply a voucher during checkout by entering the code in the designated field."
+      ]
+    },
+    {
+      "tag": "faq_account_deletion",
+      "patterns": [
+        "How do I delete my account?",
+        "Account deletion process",
+        "Close my account"
+      ],
+      "responses": [
+        "To delete your account, please contact our customer support team."
+      ],
+      "context_filter": "Account Delete"
+    },
+    {
+      "tag": "faq_order_modification",
+      "patterns": [
+        "Can I modify my order?",
+        "Change order details",
+        "Update my order"
+      ],
+      "responses": [
+        "Once an order has been placed, it cannot be modified. You may cancel the order within 7 days of placement."
+      ]
+    },
+    {
+      "tag": "product_reviews",
+      "patterns": [
+        "How do I write a review for a product?",
+        "Can I leave feedback for an item?",
+        "Where can I review my purchase?"
+      ],
+      "responses": [
+        "To write a review for a product, please ensure you have purchased it first. Navigate to your profile and click on 'Orders' to find the product you wish to review."
+      ]
+    },
+    {
+      "tag": "discounts_promotions",
+      "patterns": [
+        "Are there any discounts available?",
+        "How can I use a promotional code?",
+        "Do you have any ongoing sales?"
+      ],
+      "responses": [
+        "Stay updated on our latest discounts and promotions by subscribing to our newsletter or visiting our promotions page."
+      ]
+    },
+    {
+      "tag": "delivery_time",
+      "patterns": [
+        "How long does delivery take?",
+        "When will I receive my order?",
+        "Delivery timeframe?"
+      ],
+      "responses": [
+        "Delivery typically takes 2-4 days. Please expect some delays during peak times."
+      ]
+    },
+    {
+      "tag": "shipping_information",
+      "patterns": [
+        "How much does shipping cost?",
+        "Shipping fees",
+        "Free shipping eligibility"
+      ],
+      "responses": [
+        "Shipping costs vary based on location and order size. Free shipping is available on orders above a certain amount."
       ]
     }
   ]
