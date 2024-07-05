@@ -4,11 +4,11 @@
       "tag": "greeting",
       "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Namaste"],
       "responses": [
-        "Hey :-) My name is Ramri, your in-app chatbot.!",
-        "Hello, thanks for visiting. My name is Ramri!",
-        "Hi there, My name is Ramri!. What can I do for you?",
-        "Hi there, My name is Ramri! Welcome to RamroSale?",
-        "Namaste! I am Ramri to assist you in your shopping journey :)"
+        "Hey :-) My name is Saly, your in-app chatbot.!",
+        "Hello, thanks for visiting. My name is Saly!",
+        "Hi there, My name is Saly!. What can I do for you?",
+        "Hi there, My name is Saly! Welcome to RamroSale?",
+        "Namaste! I am Saly to assist you in your shopping journey :)"
       ],
       "context_set": "greeting"
     },

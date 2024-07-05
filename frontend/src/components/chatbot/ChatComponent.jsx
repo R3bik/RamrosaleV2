@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { TbMessageChatbot } from "react-icons/tb";
 import { IoCloseOutline } from "react-icons/io5";
@@ -7,29 +7,41 @@ const ChatComponent = () => {
   const [messages, setMessages] = useState([]);
   const [textInput, setTextInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const messageEndRef = useRef(null);
 
   const sendMessage = async () => {
+    if (textInput.trim() === "") return;
+
+    const newMessage = { name: "User", message: textInput };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setTextInput("");
+    setIsTyping(true);
+
     try {
       const response = await axios.post("http://localhost:5000/api/chatbot", {
         message: textInput,
       });
 
-      const newMessage = { name: "User", message: textInput };
       const responseMessage = {
         name: "Saly",
         message: response.data.answer,
       };
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        newMessage,
-        responseMessage,
-      ]);
-      setTextInput("");
+      setMessages((prevMessages) => [...prevMessages, responseMessage]);
+      setIsTyping(false);
     } catch (error) {
       console.error("Error:", error);
+      setIsTyping(false);
     }
   };
+
+  useEffect(() => {
+    // Scroll to the latest message
+    if (messageEndRef.current) {
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   useEffect(() => {
     // Event listener for Enter key to send message
@@ -53,7 +65,7 @@ const ChatComponent = () => {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <button
-        className="flex items-center justify-center w-[60px] h-[60px] bg-secondary-black rounded-full text-third text-3xl focus:outline-none"
+        className="flex items-center justify-center w-16 h-16 bg-secondary-black rounded-full text-third text-3xl focus:outline-none"
         onClick={toggleChat}
       >
         <TbMessageChatbot />
@@ -82,6 +94,13 @@ const ChatComponent = () => {
                   <div>{msg.message}</div>
                 </div>
               ))}
+              {isTyping && (
+                <div className="p-2 bg-gray-200 rounded-lg">
+                  <div className="font-semibold">Saly</div>
+                  <div>Typing...</div>
+                </div>
+              )}
+              <div ref={messageEndRef}></div>
             </div>
           </div>
           <div className="flex items-center border-t bg-primary-black border-gray-300 px-4 py-2">
