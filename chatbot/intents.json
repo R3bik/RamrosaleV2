@@ -32,10 +32,17 @@
     },
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "See you later", "Goodbye"],
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Take care",
+        "Have a nice day"
+      ],
       "responses": [
         "See you later, thanks for visiting. Hope I was able to help!",
         "Have a nice day. Hope I was able to help!",
+        "See you later! Take care.",
         "Visit us soon!"
       ]
     },
@@ -273,7 +280,10 @@
         "Do you have any promotions?",
         "Are there any discounts?",
         "Current promotions",
-        "Sales and discounts"
+        "Sales and discounts",
+        "Coupon codes",
+        "Special offers",
+        "Discount codes"
       ],
       "responses": [
         "We have various promotions and discounts throughout the year. Check our social medias to stay updated."
@@ -390,6 +400,310 @@
       ],
       "responses": [
         "Shipping costs vary based on location and order size. Free shipping is available on orders above a certain amount."
+      ]
+    },
+    {
+      "tag": "site_navigation",
+      "patterns": [
+        "How do I navigate RamroSale?",
+        "Website navigation",
+        "Find my way around RamroSale"
+      ],
+      "responses": [
+        "Navigate RamroSale easily using the menu categories at the top of the page.",
+        "Explore different sections of RamroSale through the user-friendly navigation menu.",
+        "Find your way around RamroSale using the navigation links provided for easy browsing."
+      ]
+    },
+    {
+      "tag": "site_security",
+      "patterns": [
+        "Is RamroSale secure?",
+        "Security measures on RamroSale",
+        "Data protection at RamroSale"
+      ],
+      "responses": [
+        "At RamroSale, we prioritize security and implement measures to protect your data and transactions.",
+        "RamroSale is secured with industry-standard security protocols to ensure your information is safe.",
+        "Learn about our commitment to data protection and site security at RamroSale."
+      ]
+    },
+    {
+      "tag": "product_search",
+      "patterns": [
+        "Search for products",
+        "Find [product name]",
+        "Looking for [product category]"
+      ],
+      "responses": [
+        "Use the search bar to find products by name, category, or brand.",
+        "Explore our product catalog by searching for specific items or categories.",
+        "Looking for something specific? Use our search feature to find products easily."
+      ]
+    },
+    {
+      "tag": "wishlist_management",
+      "patterns": [
+        "How do I manage my wishlist?",
+        "Save items for later",
+        "Wishlist on RamroSale"
+      ],
+      "responses": [
+        "Manage your wishlist by logging into your account and accessing the wishlist section.",
+        "Save favorite items to your wishlist for future reference on RamroSale.",
+        "Learn how to organize and manage your wishlist effectively at RamroSale."
+      ]
+    },
+    {
+      "tag": "account_settings",
+      "patterns": [
+        "How do I update my account information?",
+        "Change account details",
+        "Account settings on RamroSale"
+      ],
+      "responses": [
+        "Update your account information by logging into your profile settings on RamroSale.",
+        "Manage and modify your account details and preferences in the account settings section.",
+        "Keep your account information up-to-date with our easy-to-use account management tools."
+      ]
+    },
+    {
+      "tag": "social_media_links",
+      "patterns": [
+        "Do you have social media accounts?",
+        "Follow RamroSale on social media",
+        "Connect on social platforms"
+      ],
+      "responses": [
+        "Stay connected with us on Facebook, Instagram, and Twitter for updates and promotions.",
+        "Follow us on social media platforms to stay updated with RamroSale's latest news and offers.",
+        "Engage with us on social media for exclusive content and community updates."
+      ]
+    },
+    {
+      "tag": "new_product_arrivals",
+      "patterns": [
+        "What's new on RamroSale?",
+        "New arrivals",
+        "Latest products"
+      ],
+      "responses": [
+        "Discover our latest arrivals and new product launches on RamroSale through our socials.",
+        "Explore new additions to our product catalog with our latest arrivals at RamroSale.",
+        "Stay updated with the newest products available on RamroSale."
+      ]
+    },
+    {
+      "tag": "product_information",
+      "patterns": [
+        "Where can I find product information?",
+        "Product details",
+        "Learn about products"
+      ],
+      "responses": [
+        "View detailed product information, including specifications and features, on each product page.",
+        "Explore product details such as dimensions, materials, and care instructions directly on RamroSale.",
+        "Find comprehensive product information to make informed purchasing decisions on RamroSale."
+      ],
+      "context_filter": "product information"
+    },
+    {
+      "tag": "account_registration",
+      "patterns": [
+        "How do I create an account?",
+        "Register on website",
+        "Sign up process"
+      ],
+      "responses": [
+        "Sign up for an account on RamroSale to enjoy personalized shopping experiences and exclusive offers.",
+        "Register on our website to create an account and access member benefits at RamroSale.",
+        "Follow our easy account registration process to start enjoying member privileges and personalized services on RamroSale."
+      ]
+    },
+    {
+      "tag": "exchange_policy",
+      "patterns": [
+        "Can I exchange my purchase?",
+        "Exchange procedure",
+        "Product swap policy"
+      ],
+      "responses": [
+        "Contact us at ramrosalebusiness@gmail.com within 7 days of delivery for exchange inquiries.",
+        "Initiate an exchange request within 7 days of receiving your order by contacting ramrosalebusiness@gmail.com with your order details.",
+        "Learn more about our product exchange policy and initiate exchanges within 7 days of delivery by contacting ramrosalebusiness@gmail.com."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": ["Help", "I need help", "Can you help me?", "Support"],
+      "responses": [
+        "Sure, I can help. What do you need assistance with?",
+        "Of course! How can I assist you?",
+        "Absolutely. What do you require assistance with today?",
+        "Sure thing! How can I support you?"
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [
+        "Sorry, I didn't understand.",
+        "Could you repeat that?",
+        "I'm not sure what you mean.",
+        "Could you clarify?",
+        "I'm confused."
+      ],
+      "responses": [
+        "I apologize, I didn't quite catch that. Could you please provide more details?",
+        "I'm sorry, I'm not sure I understand. Could you repeat that?",
+        "I'm sorry, I'm not sure what you mean. Could you clarify?",
+        "I apologize, it seems I'm a bit confused. Could you provide more information?"
+      ]
+    },
+    {
+      "tag": "website_information",
+      "patterns": [
+        "What is RamroSale about?",
+        "Tell me about RamroSale",
+        "What does RamroSale offer?",
+        "About RamroSale"
+      ],
+      "responses": [
+        "RamroSale is an e-commerce platform that offers a wide range of products.",
+        "RamroSale provides a convenient online shopping experience for various products.",
+        "At RamroSale, you can find a diverse selection of products available for purchase.",
+        "Discover RamroSale, your go-to platform for online shopping across different categories."
+      ]
+    },
+    {
+      "tag": "out_of_stock",
+      "patterns": [
+        "The product I want is out of stock.",
+        "When will this item be back in stock?",
+        "Notify me when it's available."
+      ],
+      "responses": [
+        "I apologize, that item is currently out of stock.",
+        "We expect to restock soon. Please check back later.",
+        "You can sign up for email notifications when the item is back in stock."
+      ]
+    },
+    {
+      "tag": "account_activation",
+      "patterns": [
+        "How do I activate my account?",
+        "Account activation process",
+        "Activate my user account"
+      ],
+      "responses": [
+        "To activate your account, check your email for an activation link.",
+        "Follow the instructions in the activation email to activate your account."
+      ]
+    },
+    {
+      "tag": "bulk_order_inquiry",
+      "patterns": [
+        "Do you offer discounts for bulk orders?",
+        "Bulk purchase discounts",
+        "Inquire about bulk order pricing"
+      ],
+      "responses": [
+        "Yes, we offer discounts for bulk orders. Contact our seller team through inbuild messaging fuction for pricing details.",
+        "Explore our bulk order discounts and pricing by contacting our seller team through inbuild messaging fuction.",
+        "For information on bulk order discounts and pricing, please reach out to our seller team through inbuild messaging fuction."
+      ]
+    },
+    {
+      "tag": "product_warranty",
+      "patterns": [
+        "What is your product warranty policy?",
+        "Warranty details",
+        "Learn about product guarantees"
+      ],
+      "responses": [
+        "Review our product warranty policy for details on warranties and guarantees.",
+        "Learn about our product warranties and guarantees to ensure peace of mind with your purchase.",
+        "Explore our warranty options and coverage details for products on our website."
+      ]
+    },
+    {
+      "tag": "mobile_app_support",
+      "patterns": [
+        "Do you have a mobile app?",
+        "Support for mobile app",
+        "Mobile app features"
+      ],
+      "responses": [
+        "Download our mobile app for convenient shopping, order tracking, and exclusive app-only offers.",
+        "Explore the features and benefits of our mobile app for a seamless shopping experience.",
+        "Learn more about our mobile app and how it enhances your shopping and order management."
+      ]
+    },
+    {
+      "tag": "mobile_app_support",
+      "patterns": [
+        "Do you have a mobile app?",
+        "Support for mobile app",
+        "Mobile app features"
+      ],
+      "responses": [
+        "No, we don't have a mobile app currently, but we are planning to. Stay tuned and follow us on our socials.",
+        "We are currently working on developing a mobile app. Follow us on social media for updates!",
+        "Our mobile app is currently in development. Stay tuned for its release and follow us for updates."
+      ]
+    },
+    {
+      "tag": "subscription_box",
+      "patterns": [
+        "Do you offer subscription boxes?",
+        "Subscribe to monthly box",
+        "Monthly subscription service"
+      ],
+      "responses": [
+        "Currently, we do not offer a subscription box service. Check back with us for any updates in the future!",
+        "We do not have a subscription box service at the moment. Stay tuned for any announcements or changes.",
+        "At this time, we do not provide a subscription box service. Follow us for updates on new services."
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Give me a funny joke",
+        "I want to hear something funny"
+      ],
+      "responses": [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "I used to play piano by ear, but now I use my hands.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+        "I'm reading a book on anti-gravity. It's impossible to put down!",
+        "Why don't skeletons fight each other? They don't have the guts."
+      ]
+    },
+    {
+      "tag": "product_discovery",
+      "patterns": [
+        "Help me discover new products",
+        "Recommend products",
+        "Product exploration"
+      ],
+      "responses": [
+        "Discover new products tailored to your preferences with our personalized recommendations.",
+        "Explore our curated collections and find new products that match your interests.",
+        "Learn how our product discovery tool can help you find unique and trending items."
+      ]
+    },
+    {
+      "tag": "featured_brand",
+      "patterns": [
+        "What are your featured brands?",
+        "Top brands",
+        "Brand highlights"
+      ],
+      "responses": [
+        "Explore our featured brands known for quality, style, and customer satisfaction.",
+        "Discover top brands we partner with to offer you the best products and choices.",
+        "Learn more about our brand highlights and why they're favorites among our customers."
       ]
     }
   ]
