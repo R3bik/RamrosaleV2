@@ -13,6 +13,10 @@ export const navItems = [
     url: "/products",
   },
   // {
+  //   title: "Beast Deals",
+  //   url: "/products",
+  // },
+  // {
   //   title: "Events",
   //   url: "/events",
   // },
