@@ -2,33 +2,23 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": [
-        "Hi",
-        "Hey",
-        "Is anyone there?",
-        "Hello",
-        "Namaste"
-      ],
+      "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Namaste"],
       "responses": [
-        "Hey :-) My name is Saly, your in-app chatbot.!",
-        "Hello, thanks for visiting. My name is Saly!",
-        "Hi there, My name is Saly!. What can I do for you?",
-        "Hi there, My name is Saly! How can I help?",
-        "Namaste! I am Saly toa assist you in your shopping journey :)"
-      ]
+        "Hey :-) My name is Ramri, your in-app chatbot.!",
+        "Hello, thanks for visiting. My name is Ramri!",
+        "Hi there, My name is Ramri!. What can I do for you?",
+        "Hi there, My name is Ramri! Welcome to RamroSale?",
+        "Namaste! I am Ramri to assist you in your shopping journey :)"
+      ],
+      "context_set": "greeting"
     },
     {
       "tag": "personal",
-      "patterns": [
-        "How are you?",
-        "How are you doing?",
-        "How is your day?"
-      ],
-      "responses": [
-        "I'm good, all's good, thanks. How about you?"
-      ]
+      "patterns": ["How are you?", "How are you doing?", "How is your day?"],
+      "responses": ["I'm good, all's good, thanks. How about you?"],
+      "context_filter": "greeting"
     },
-            {
+    {
       "tag": "user response",
       "patterns": [
         "I'm good",
@@ -37,10 +27,9 @@
         "I am good",
         "I am okay"
       ],
-      "responses": [
-        "Great to hear you are doing good."
-      ]
-    },   
+      "responses": ["Great to hear you are doing good."],
+      "context_filter": "personal"
+    },
     {
       "tag": "goodbye",
       "patterns": ["Bye", "See you later", "Goodbye"],
@@ -52,7 +41,14 @@
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!", "thx", "thnks"],
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thank's a lot!",
+        "thx",
+        "thnks"
+      ],
       "responses": ["Happy to help!", "Any time!", "My pleasure"]
     },
     {
@@ -66,8 +62,9 @@
         "How to buy items?"
       ],
       "responses": [
-        "Search your preference in our flagship store's search bar to see all available products. "
-      ]
+        "Search your preference in our store's search bar to see all available products. "
+      ],
+      "context_set": "items"
     },
     {
       "tag": "payments",
@@ -79,35 +76,36 @@
         "What are your payment methods?",
         "How do I pay?"
       ],
-      "responses": [
-        "We accept VISA, Mastercard and Cash"
-      ]
+      "responses": ["We accept PayPal, Card and Cash"],
+      "context_filter": "items"
     },
     {
       "tag": "track",
       "patterns": [
-        "How can I track my order", 
-        "I want to track my order", 
-        "Can I track my order", 
+        "How can I track my order",
+        "I want to track my order",
+        "Can I track my order",
         "Track order"
       ],
       "responses": [
         "Visit the order page, click on the specific order, select 'track my order', and check the status"
-      ]
+      ],
+      "context_set": "tracking"
     },
     {
       "tag": "delivery",
       "patterns": [
         "How long does delivery take?",
         "How long does shipping take?",
-        "Please Tell me about my delivery",
+        "Please tell me about my delivery",
         "When do I get my delivery?",
         "Why is my order not delivered yet"
       ],
       "responses": [
         "Delivery takes 2-4 days. Please bear with us!",
-        "Shipping takes 2-4 days.  Please bear with us!"
-      ]
+        "Shipping takes 2-4 days. Please bear with us!"
+      ],
+      "context_filter": "tracking"
     },
     {
       "tag": "confirm",
@@ -119,52 +117,55 @@
       ],
       "responses": [
         "We send you an Email & SMS upon confirmation of your order. If it requires manual confirmation, our team will contact you within 24 hours after order placement. Delay in confirmation SMS may occur due to network error, you may receive it with a delay.",
-        "It takes upto 24 hours for confirmation, please bear with us! Type Need more help for more assistance. "
-      ]
+        "It takes up to 24 hours for confirmation, please bear with us! Type 'Need more help' for more assistance. "
+      ],
+      "context_set": "confirmation"
     },
     {
       "tag": "delay",
       "patterns": [
-        "Why is my order delayed? ",
+        "Why is my order delayed?",
         "Did my order get delayed?",
         "Why is my order not delivered yet?",
         "When do I get my delivery?"
       ],
       "responses": [
-        "We are really sorry if there has been a delay in your order! If your order is within delivery period, We recommend you to please wait during this period since our Delivery Heroes make 3 attempts to deliver your order!",
-        "If your order is past up to 3 days after delivery period, There may be logistic issues causing a delay in delivery. Please type 'Common reasons for delivery delay' to know more about this.",
+        "We are really sorry if there has been a delay in your order! If your order is within the delivery period, we recommend you wait during this period since our Delivery Heroes make 3 attempts to deliver your order!",
+        "If your order is past up to 3 days after the delivery period, there may be logistic issues causing a delay in delivery. Please type 'Common reasons for delivery delay' to know more about this.",
         "We appreciate if you could wait for your items as most orders are delivered successfully within this period.",
-        "If your order is past more than 3 days, Since there may be unexpected issues causing delivery delays, you can click on 'Need more Help' for further assistance."
-      ]
+        "If your order is past more than 3 days, since there may be unexpected issues causing delivery delays, you can click on 'Need more Help' for further assistance."
+      ],
+      "context_filter": "tracking"
     },
     {
       "tag": "reasons",
       "patterns": [
         "Common reasons for delivery delay",
-        "reasons for delay",
-        "delivery delay"
+        "Reasons for delay",
+        "Delivery delay"
       ],
       "responses": [
-        "Reasons include Seller Sourcing Issues, Courier Issues, Cross Border shipment delay, Wrong Address or Phone Number, and Unavailability of Customer. "
-      ]
+        "Reasons include Seller Sourcing Issues, Courier Issues, Cross Border shipment delay, Wrong Address or Phone Number, and Unavailability of Customer."
+      ],
+      "context_filter": "delay"
     },
     {
       "tag": "more",
       "patterns": [
         "Need more help",
-        "help me more",
-        "can I talk to an agent",
-        "can I call customer service",
-        "customer support number",
-        "how to contact customer service",
-        "customer service number",
-        "contact number for help",
-        "helpline number",
+        "Help me more",
+        "Can I talk to an agent",
+        "Can I call customer service",
+        "Customer support number",
+        "How to contact customer service",
+        "Customer service number",
+        "Contact number for help",
+        "Helpline number",
         "How to become a seller",
         "How to contact a seller"
       ],
       "responses": [
-        "Contact us for further information here: Email us at: <a href='mailto:barnns111@gmail.com'>barnns111@gmail.com</a>."
+        "Contact us for further information here: Email us at: <a href='mailto:ramrosalebusiness@gmail.com'>ramrosale_business@gmail.com</a>."
       ]
     },
     {
@@ -172,25 +173,26 @@
       "patterns": [
         "Can I cancel my order?",
         "Why is my order cancelled?",
-        "How do I can cancel my order",
+        "How do I cancel my order",
         "Can I cancel an order"
       ],
       "responses": [
-        "Order can only be cancelled within 7 days of placement. Digital goods do not qualify for refund.",
-        "Visit my orders page to check status of specific orders."
+      "Unfortunately, we don't have a direct method to cancel an order once it has been placed. However, you can send a message to the seller through our website and request them to cancel your order. If you no longer want the items you've ordered, you can return them for a refund within 7 days of delivery without damaging the items.",
+        "Visit the my orders page to check the status of specific orders."
       ]
     },
     {
       "tag": "refund",
       "patterns": [
-        "Can I refund an item.",
+        "Can I refund an item?",
         "I want to refund an item",
-        "can I refund my order",
-        "Are refunds available"
+        "Can I refund my order?",
+        "Are refunds available?",
+        "I want a refund"
       ],
       "responses": [
         "Refund can only be issued within 7 days of placement. Digital goods do not qualify for refund.",
-        "Visit my orders page to check for specific orders."
+        "Visit the my orders page to check for specific orders."
       ]
     },
     {
@@ -203,91 +205,69 @@
         "Refund money not received"
       ],
       "responses": [
-        "Please be patient as refunds take upto 30 days to receive into bank. "
-      ]
-    },
-    {
-      "tag": "refund",
-      "patterns": [
-        "Can I refund an item.",
-        "I want to refund an item",
-        "can I refund my order",
-        "Are refunds available"
-      ],
-      "responses": [
-        "Refund can only be issued within 7 days of placement.Visit my orders page to check for specific orders."        
+        "Please be patient as refunds take up to 30 days to receive into the bank."
       ]
     },
     {
       "tag": "return",
       "patterns": [
-        "How long do return items take",
-        "When will my items be returned",
+        "How long do return items take?",
+        "When will my items be returned?",
         "When can I get a refund for return items?",
         "Are refunds available for return?"
       ],
       "responses": [
-        "Return takes 6 to 10 business days. There are 2 parts to the return process. In the first part, we check the items received from you to verify the issue highlighted in your return claim. Once we've verified and accepted your return, we initiate the refund process which takes 1 business day for Daraz wallet and 2-10 business days for bank or card. "
-      ]
+        "Return takes 6 to 10 business days. There are 2 parts to the return process. In the first part, we check the items received from you to verify the issue highlighted in your return claim. Once we've verified and accepted your return, we initiate the refund process which takes 1 business day for Daraz wallet and 2-10 business days for bank or card."
+      ],
+      "context_set": "return"
     },
     {
-      "tag": "withdraw refunds",
+      "tag": "faq_return_policy",
       "patterns": [
-        "How to withdraw refunds from wallet?",
-        "Withdraw funds",
-        "Can I withdraw refunds"
+        "What is your return policy?",
+        "Return policy",
+        "Can I return items?",
+        "can i return the product after purchase"
       ],
       "responses": [
-        "Withdrawing refunds from your wallet is very easy. Please follow the steps below: Step 1: Click on the 'Wallet' icon on the top right corner of the Daraz App, or click here. Step 2: Click on the 'Balance Details' Icon. Step 3: Click on 'Withdraw' button. Step 4: Enter your bank account details and click 'Withdraw'. Step 5: You will receive a verification email, click confirm to initiate your withdrawal request."
-      ]
+        "If you're not satisfied with your purchase, we accept returns within 7 days of delivery. To initiate a return, please email us at ramrosalebusiness@gmail.com with your order number and a brief explanation of why you're returning the item."
+      ],
+      "context_filter":"refund"
     },
     {
-      "tag": "order status",
+      "tag": "promotions",
       "patterns": [
-        "What is my order status",
-        "I want to know my return status",
-        "How to return status"
+        "Do you have any promotions?",
+        "Are there any discounts?",
+        "Current promotions",
+        "Sales and discounts"
       ],
       "responses": [
-        "Please visit the My Orders page for a list of your confirmed orders."
-      ]
+        "We have various promotions and discounts throughout the year. Check our social medias to stay updated."
+      ],
+      "context_set": "promotions"
     },
     {
-      "tag": "use voucher",
+      "tag": "store_location",
       "patterns": [
-        "How to use a voucher?",
-        "Can I use a voucher?",
-        "How to use a voucher?"
+        "Where is your store located?",
+        "Store location",
+        "Address of your store",
+        "Physical store location"
       ],
-      "responses": [
-        "You can add a voucher by clicking on My Cart > Check Out > Enter Voucher Code > APPLY. "
-      ]
+      "responses": ["We are an online based store only! :)"]
     },
-        {
-      "tag": "profile info",
+    {
+      "tag": "customer_support",
       "patterns": [
-        "How can I change my profile information",
-        "I want to change my password",
-        "I want to change my phone number",
-        "I want to change my address",
-        "I want to Reset my password",
-        "I want to delete my account",
-        "delete my account"
+        "How can I contact customer support?",
+        "Customer support",
+        "Help desk",
+        "Support contact"
       ],
       "responses": [
-        "You can easily add or change your account details by following the steps below: Step 1: Click on 'Account', Step 2: Click on 'Manage my account' from the icon, Step 3: You change or edit your name, address, email address, mobile number, etc., Step 4: Fill in the required details, and click on Save. Note: You can also change your delivery address from the Checkout page before proceeding to pay."
+        "You can contact our customer support team via email at ramrosalebusiness@gmail.com"
       ]
-    },
-        {
-      "tag": "mobile app",
-      "patterns": [
-        "Can I download a mobile app for this?",
-        "Mobile app",
-        "Download mobile app"
-      ],
-      "responses": [
-        "RamroSale mobile appl is currently under progress. Please be patient with us. "
-      ]
-    }  
+    }
   ]
 }

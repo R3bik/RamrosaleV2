@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
 import { server } from "../../server";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import styles from "../../styles/styles";
-import { TfiGallery } from "react-icons/tfi";
+// import { TfiGallery } from "react-icons/tfi";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
 
@@ -20,9 +20,9 @@ const DashboardMessages = () => {
   const [messages, setMessages] = useState([]);
   const [userData, setUserData] = useState(null);
   const [newMessage, setNewMessage] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
-  const [activeStatus, setActiveStatus] = useState(false);
-  const [images, setImages] = useState();
+  const [setOnlineUsers] = useState([]);
+  const [setActiveStatus] = useState(false);
+  const [setImages] = useState();
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
 
@@ -70,12 +70,12 @@ const DashboardMessages = () => {
     }
   }, [seller]);
 
-  const onlineCheck = (chat) => {
-    const chatMembers = chat.members.find((member) => member !== seller?._id);
-    const online = onlineUsers.find((user) => user.userId === chatMembers);
+  // const onlineCheck = (chat) => {
+  //   const chatMembers = chat.members.find((member) => member !== seller?._id);
+  //   const online = onlineUsers.find((user) => user.userId === chatMembers);
 
-    return online ? true : false;
-  };
+  //   return online ? true : false;
+  // };
 
   // get messages
   useEffect(() => {
@@ -270,7 +270,7 @@ const MessageList = ({
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const userId = data.members.find((user) => user != me);
+    const userId = data.members.find((user) => user !== me);
 
     const getUser = async () => {
       try {
@@ -329,10 +329,10 @@ const SellerInbox = ({
   messages,
   sellerId,
   userData,
-  activeStatus,
+  // activeStatus,
   scrollRef,
-  setMessages,
-  handleImageUpload,
+  // setMessages,
+  // handleImageUpload,
 }) => {
   return (
     <div className="w-full min-h-full flex flex-col justify-between">
