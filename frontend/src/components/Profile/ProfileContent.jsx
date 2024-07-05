@@ -30,7 +30,8 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(user && user.avatar.url);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const ProfileContent = ({ active }) => {
 
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setAvatar(reader.result);
+        setAvatar(reader.result); // Update the avatar state here
         axios
           .put(
             `${server}/user/update-avatar`,
@@ -65,7 +66,8 @@ const ProfileContent = ({ active }) => {
           )
           .then((response) => {
             dispatch(loadUser());
-            toast.success("avatar updated successfully!");
+            toast.success("Avatar updated successfully!");
+            // window.location.reload();
           })
           .catch((error) => {
             toast.error(error);
@@ -90,6 +92,7 @@ const ProfileContent = ({ active }) => {
               />
               <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
                 <input
+                  src={avatar}
                   type="file"
                   id="image"
                   className="hidden"
