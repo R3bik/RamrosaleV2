@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsFillBagFill } from "react-icons/bs";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/styles";
 import { getAllOrdersOfUser } from "../redux/actions/order";
@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 const UserOrderDetails = () => {
   const { orders } = useSelector((state) => state.order);
-  const { user } = useSelector((state) => state.user);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [comment, setComment] = useState("");
@@ -20,39 +20,58 @@ const UserOrderDetails = () => {
   const [rating, setRating] = useState(1);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
   }, [dispatch, user._id]);
 
   const data = orders && orders.find((item) => item._id === id);
+  const handleMessageSubmit = async () => {
+    if (isAuthenticated) {
+      const groupTitle = data._id + user._id;
+      const userId = user._id;
+      const sellerId = data.cart[0]?.shop._id;
+      await axios
+        .post(`${server}/conversation/create-new-conversation`, {
+          groupTitle,
+          userId,
+          sellerId,
+        })
+        .then((res) => {
+          navigate(`/inbox?${res.data.conversation._id}`);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
+    } else {
+      toast.error("Please login to create a conversation");
+    }
+  };
 
   const reviewHandler = async (e) => {
-    if (!selectedItem) {
-      toast.error("No item selected for review.");
-      return;
-    }
-
-    try {
-      const response = await axios.put(
+    await axios
+      .put(
         `${server}/product/create-new-review`,
         {
           user,
           rating,
           comment,
-          productId: selectedItem._id,
+          productId: selectedItem?._id,
           orderId: id,
         },
         { withCredentials: true }
-      );
-      toast.success(response.data.message);
-      dispatch(getAllOrdersOfUser(user._id));
-      setComment("");
-      setRating(1);
-      setOpen(false);
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
+      )
+      .then((res) => {
+        toast.success(res.data.message);
+        dispatch(getAllOrdersOfUser(user._id));
+        setComment("");
+        setRating(null);
+        setOpen(false);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
   };
 
   const refundHandler = async () => {
@@ -240,9 +259,14 @@ const UserOrderDetails = () => {
         </div>
       </div>
       <br />
-      <Link to="/inbox">
-        <div className={`${styles.button} text-white`}>Send Message</div>
-      </Link>
+
+      <div
+        className={`${styles.button} text-white`}
+        onClick={handleMessageSubmit}
+      >
+        Send Message
+      </div>
+
       <br />
       <br />
     </div>
